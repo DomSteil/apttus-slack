@@ -23,24 +23,19 @@ let Botkit = require('botkit'),
 
     app.set('port', process.env.PORT || 5000);
 
-app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/approve', approve.execute);
-app.post('activateAgreement', activateAgreement.execute);
-app.post('addBundle', addBundle.execute);
-app.post('addToCart', addToCart.execute);
-app.post('compare', compare.execute);
-app.post('computePrice', computePrice.execute);
-app.post('configureProducts', configureProducts.execute);
-app.post('finalizeCart', finalizeCart.execute);
-app.post('generateAgreement', generateAgreement.execute);
-app.post('generateProposal', generateProposal.execute);
-app.post('searchProducts', searchProducts.execute);
-
-
-app.listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
-    auth.login();
+    app.post('/approve', approve.execute);
+    app.post('activateAgreement', activateAgreement.execute);
+    app.post('addBundle', addBundle.execute);
+    app.post('addToCart', addToCart.execute);
+    app.post('compare', compare.execute);
+    app.post('computePrice', computePrice.execute);
+    app.post('configureProducts', configureProducts.execute);
+    app.post('finalizeCart', finalizeCart.execute);
+    app.post('generateAgreement', generateAgreement.execute);
+    app.post('generateProposal', generateProposal.execute);
+    app.post('searchProducts', searchProducts.execute);
 
     controller = Botkit.slackbot({interactive_replies: true}),
 
