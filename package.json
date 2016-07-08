@@ -1,0 +1,27 @@
+{
+  "name": "aptbots",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "botkit": "^0.1.2",
+    "express": "^4.13.4",
+    "nforce": "^1.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domsteil/apttus-slack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domsteil/apttus-slack/issues"
+  },
+  "homepage": "https://github.com/domsteil/apttus-slack#readme"
+}
