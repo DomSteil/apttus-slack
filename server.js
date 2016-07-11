@@ -828,7 +828,7 @@ controller.hears('Blade Servers', 'direct_message,direct_mention,mention', funct
                 attachment_type: 'default',
                 actions: [
                     {
-                        "name":"Add to Cart",
+                        "name":"addToCart",
                         "text": "Add to Cart",
                         "value": "Add to Cart",
                         "style": "primary",

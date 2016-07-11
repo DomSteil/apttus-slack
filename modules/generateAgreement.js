@@ -15,10 +15,7 @@ function execute(req, res) {
     var comments = params[1];
 
     var c = nforce.createSObject('Slack_Requests__c');
-    c.set('Type__c', 'Approval');
-    c.set('Approval_Id__c', name);
-    c.set('Approved__c', 'Yes');
-    c.set('Approval_Comments__c', comments);
+    c.set('Type__c', 'Generate');
 
 
     org.insert({ sobject: c}, function(err, resp) {
