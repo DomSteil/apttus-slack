@@ -343,6 +343,71 @@ let createTask = task => {
     });
 };
 
+
+let activateAgreement = activateAgreement => {
+
+    return new Promise((resolve, reject) => {
+        var c = nforce.createSObject('Slack_Requests__c');
+    c.set('Type__c', 'Activate');
+    c.set('agreement_Id__c', agreement);
+
+    org.insert({sobject: c}, err => {
+            if (err) {
+                console.error(err);
+                reject("An error occured while creating the activating the agreement");
+            } else {
+                resolve(c);
+            }
+        });
+    });
+};
+
+
+let addBundle = addBundle => {
+
+    return new Promise((resolve, reject) => {
+        var c = nforce.createSObject('Slack_Requests__c');
+    c.set('Type__c', 'CPQ');
+    c.set('CPQ_Actions__c','Add to Cart');
+    c.set('CartId__c', cartId);
+    c.set('Product_Name__c', products);
+
+    org.insert({sobject: c}, err => {
+            if (err) {
+                console.error(err);
+                reject("An error occured while creating the activating the agreement");
+            } else {
+                resolve(c);
+            }
+        });
+    });
+};
+
+
+let addToCart = addToCart => {
+
+    return new Promise((resolve, reject) => {
+        var c = nforce.createSObject('Slack_Requests__c');
+    c.set('Type__c', 'CPQ');
+    c.set('CPQ_Actions__c','Add to Cart');
+    c.set('CartId__c', cartId);
+    c.set('Product_Name__c', products);
+
+    org.insert({sobject: c}, err => {
+            if (err) {
+                console.error(err);
+                reject("An error occured while creating the activating the agreement");
+            } else {
+                resolve(c);
+            }
+        });
+    });
+};
+
+
+
+
+
 login();
 
 exports.org = org;
@@ -363,4 +428,9 @@ exports.createISR = createISR;
 exports.createNDA = createNDA;
 exports.createCart = createCart;
 exports.createTask = createTask;
+exports.activateAgreement = activateAgreement;
+exports.addBundle = addBundle;
+exports.addToCart = addToCart;
+
+
 
