@@ -28,7 +28,7 @@ let Botkit = require('botkit'),
     //OAUTH REQUEST CODE 
 
     app.get('/', (req, res) => {
-        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook,commands,bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/server')}`);
+        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook+commands+bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/server')}`);
     });
 
     app.get('/server', (req, res) => {
