@@ -59,7 +59,7 @@ let Botkit = require('botkit'),
 
 function startAptbot(token) {
 bot = controller.spawn({
-        token: SLACK_BOT_TOKEN
+        token: botToken
     });
 
 bot.startRTM(err => {
