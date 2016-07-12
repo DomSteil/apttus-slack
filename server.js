@@ -31,11 +31,12 @@ let Botkit = require('botkit'),
         res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook+commands+bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/salesforce')}`);
     });
 
-    app.get('/server', (req, res) => {
+    app.get('/', (req, res) => {
         let code = req.query.code;
 
         request
-            .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('https://apttus-slack.herokuapp.com/salesforce')}`)
+            //.get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('https://apttus-slack.herokuapp.com/salesforce')}`)
+            .get(`https://slack.com/api/oauth.access?client_id=9016687319.53755457395&client_secret=8fe6641dbee71c59b55f25e79a6c0a83&code=9016687319.59179274631.26cd470437&pretty=1')}`)
             .end((err, result) => {
                 if (err) {
                     console.log(err);
