@@ -22,8 +22,8 @@ let Botkit = require('botkit'),
     searchProducts = require('./modules/searchProducts'),
     app = express();
 
-    CLIENT_ID = 'SLACK_CLIENT_ID';
-    CLIENT_SECRET = 'SLACK_CLIENT_SECRET';
+const  CLIENT_ID = 'SLACK_CLIENT_ID';
+const  CLIENT_SECRET = 'SLACK_CLIENT_SECRET';
 
     app.get('/', (req, res) => {
         res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook,commands,botapp')`);
