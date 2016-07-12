@@ -5,6 +5,7 @@ const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
 let Botkit = require('botkit'),
     formatter = require('./modules/slack-formatter'),
     salesforce = require('./modules/salesforce'),
+    requests = require('superagent'),
     express = require('express'),
     bodyParser = require('body-parser'),
     auth = require('./modules/auth'),
@@ -21,10 +22,39 @@ let Botkit = require('botkit'),
     searchProducts = require('./modules/searchProducts'),
     app = express();
 
+    CLIENT_ID = 'SLACK_CLIENT_ID';
+    CLIENT_SECRET = 'SLACK_CLIENT_SECRET';
+
+    app.get('/', (req, res) => {
+        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook,commands,bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/server')}`);
+    });
+
+    app.get('/', (req, res) => {
+        let code = req.query.code;
+
+        request
+        .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code={code}&redirect_uri=${escape('https://apttus-slack.herokuapp.com/server')}`)
+        .end((err, result) => {
+            if (err) {
+                console.log(err);
+                return res.send('An error occured! Please try again later');
+            }
+            console.log(res.body);
+
+            let botToken = result.body.bot.bot_access_token;
+            console.log(botToken);
+
+            res.send('aptbot started!');
+            });
+        });
+
+    app.listen(8080, () => {
+        console.log('listening');
+    });
+
     app.set('port', process.env.PORT || 5000);
 
     app.use(bodyParser.urlencoded({extended: true}));
-
     app.post('/approve', approve.execute);
     app.post('activateAgreement', activateAgreement.execute);
     app.post('addBundle', addBundle.execute);

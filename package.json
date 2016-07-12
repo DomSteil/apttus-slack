@@ -1,13 +1,13 @@
 {
   "name": "aptbots",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.0",
     "botkit": "^0.1.2",
     "express": "^4.13.4",
-    "nforce": "^1.4.1"
+    "nforce": "^1.4.1",
+    "superagent": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/domsteil/apttus-slack/issues"
   },
-  "homepage": "https://github.com/domsteil/apttus-slack#readme"
+  "homepage": "https://github.com/domsteil/apttus-slack#readme",
+  "description": ""
 }
