@@ -25,17 +25,17 @@ let Botkit = require('botkit'),
     app = express();
 
 
-    //OAUTH REQUEST
+    //OAUTH REQUEST CODE 
 
     app.get('/', (req, res) => {
-        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook,commands,bot&redirect_uri=${escape('http://[YOUR_REDIRECT_URI]/server')}`);
+        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook,commands,bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/server')}`);
     });
 
-    app.get('/salesforce', (req, res) => {
+    app.get('/server', (req, res) => {
         let code = req.query.code;
 
         request
-            .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('http://[YOUR_REDIRECT_URI]/server')}`)
+            .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('https://apttus-slack.herokuapp.com/server')}`)
             .end((err, result) => {
                 if (err) {
                     console.log(err);
