@@ -26,19 +26,19 @@ let Botkit = require('botkit'),
 
 
     app.get('/', (req, res) => {
-        res.redirect(`https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=${CLIENT_ID}')`);
+        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook,commands,bot&redirect_uri=${escape('http://[YOUR_REDIRECT_URI]/server')}`);
     });
 
     app.get('/salesforce', (req, res) => {
         let code = req.query.code;
 
         request
-        .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code={code}`)
-        .end((err, result) => {
-            if (err) {
-                console.log(err);
-                return res.send('An error occured! Please try again later');
-            }
+            .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('http://[YOUR_REDIRECT_URI]/server')}`)
+            .end((err, result) => {
+                if (err) {
+                    console.log(err);
+                    return res.send('An error occured! Please try again later');
+                }
             console.log(res.body);
 
     app.set('port', process.env.PORT || 5000);
