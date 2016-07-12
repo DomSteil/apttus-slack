@@ -25,6 +25,8 @@ let Botkit = require('botkit'),
     app = express();
 
 
+    //OAUTH REQUEST
+
     app.get('/', (req, res) => {
         res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook,commands,bot&redirect_uri=${escape('http://[YOUR_REDIRECT_URI]/server')}`);
     });
@@ -40,6 +42,7 @@ let Botkit = require('botkit'),
                     return res.send('An error occured! Please try again later');
                 }
             console.log(res.body);
+
 
     app.set('port', process.env.PORT || 5000);
 
