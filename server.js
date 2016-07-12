@@ -26,7 +26,7 @@ const  CLIENT_ID = 'SLACK_CLIENT_ID';
 const  CLIENT_SECRET = 'SLACK_CLIENT_SECRET';
 
     app.get('/', (req, res) => {
-        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook,commands,botapp')`);
+        res.redirect(`https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=${CLIENT_ID}')`);
     });
 
     app.get('/', (req, res) => {
