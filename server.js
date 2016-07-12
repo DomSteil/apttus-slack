@@ -1,6 +1,5 @@
 "use strict";
 
-const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
 const CLIENT_ID = process.env.SLACK_CLIENT_ID;
 const CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
 
