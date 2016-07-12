@@ -29,7 +29,7 @@ const  CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
         res.redirect(`https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=${CLIENT_ID}')`);
     });
 
-    app.get('/', (req, res) => {
+    app.get('/server', (req, res) => {
         let code = req.query.code;
 
         request
@@ -40,17 +40,6 @@ const  CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
                 return res.send('An error occured! Please try again later');
             }
             console.log(res.body);
-
-            let botToken = result.body.bot.bot_access_token;
-            console.log(botToken);
-
-            res.send('aptbot started!');
-            });
-        });
-
-    app.listen(8080, () => {
-        console.log('listening');
-    });
 
     app.set('port', process.env.PORT || 5000);
 
