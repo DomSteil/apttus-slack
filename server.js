@@ -44,11 +44,11 @@ let Botkit = require('botkit'),
 
                 console.log(res.body);
 
-                let botToken = result.body.bot.SLACK_BOT_TOKEN;
+                let botToken = result.body.bot.bot_access_token;
 
-                startSlackBot(result.vody.bot.SLACK_BOT_TOKEN);
+                startAptbot(result.body.bot.bot_access_token);
 
-                res.send(success)
+                res.send('SUCCESS!');
             });
         });
 
@@ -57,11 +57,9 @@ let Botkit = require('botkit'),
     });
 
 
-function startSlackBot(token) {
+function startAptbot(token) {
 bot = controller.spawn({
-        token: SLACK_BOT_TOKEN,
-        autoReconnect: true,
-        autoMark: true
+        token: SLACK_BOT_TOKEN
     });
 
 bot.startRTM(err => {
