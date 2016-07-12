@@ -41,7 +41,34 @@ let Botkit = require('botkit'),
                     console.log(err);
                     return res.send('An error occured! Please try again later');
                 }
-            console.log(res.body);
+
+                console.log(res.body);
+
+                let botToken = result.body.bot.SLACK_BOT_TOKEN;
+
+                startSlackBot(result.vody.bot.SLACK_BOT_TOKEN);
+
+                res.send(success)
+            });
+        });
+
+    app.listen(8080, () => {
+        console.log('listening');
+    });
+
+
+function startSlackBot(token) {
+bot = controller.spawn({
+        token: SLACK_BOT_TOKEN,
+        autoReconnect: true,
+        autoMark: true
+    });
+
+bot.startRTM(err => {
+    if (err) {
+        throw new Error('Could not connect to Slack');
+    }
+});
 
 
     app.set('port', process.env.PORT || 5000);
@@ -60,16 +87,6 @@ let Botkit = require('botkit'),
     app.post('searchProducts', searchProducts.execute);
 
     controller = Botkit.slackbot({interactive_replies: true}),
-
-    bot = controller.spawn({
-        token: SLACK_BOT_TOKEN
-    });
-
-bot.startRTM(err => {
-    if (err) {
-        throw new Error('Could not connect to Slack');
-    }
-});
 
 
 controller.hears(['help'], 'direct_message,direct_mention,mention', (bot, message) => {
