@@ -30,7 +30,7 @@ let Botkit = require('botkit'),
         res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook+commands+bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/salesforce')}`);
     });
 
-    app.get('/server', (req, res) => {
+    app.get('/salesforce', (req, res) => {
         let code = req.query.code;
 
         request
