@@ -1,6 +1,8 @@
 "use strict";
 
 const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
+const CLIENT_ID = process.env.SLACK_CLIENT_ID;
+const CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
 
 let Botkit = require('botkit'),
     formatter = require('./modules/slack-formatter'),
@@ -22,8 +24,6 @@ let Botkit = require('botkit'),
     searchProducts = require('./modules/searchProducts'),
     app = express();
 
-const  CLIENT_ID = process.env.SLACK_CLIENT_ID;
-const  CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
 
     app.get('/', (req, res) => {
         res.redirect(`https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=${CLIENT_ID}')`);
