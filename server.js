@@ -29,7 +29,7 @@ let Botkit = require('botkit'),
         res.redirect(`https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=${CLIENT_ID}')`);
     });
 
-    app.get('/server', (req, res) => {
+    app.get('/salesforce', (req, res) => {
         let code = req.query.code;
 
         request
