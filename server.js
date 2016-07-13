@@ -61,11 +61,7 @@ function startAptbot(token) {
     const bot = controller.spawn({
         token: botToken
     })
-    bot.startRTM(err => {
-        if (err) {
-            throw new Error('Could not connect to Slack');
-        }
-    });
+    bot.startRTM()
 
 
  /*   //OAUTH ACCESS REQUEST CODE v2
