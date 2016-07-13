@@ -47,7 +47,7 @@ let Botkit = require('botkit'),
 
                 startAptbot(result.body.bot.bot_access_token);
 
-                res.send('SUCCESS!');
+                res.send('SUCCESS, WAY TO GO DUDE!');
             });
         });
 
