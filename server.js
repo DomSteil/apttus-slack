@@ -27,41 +27,46 @@ let Botkit = require('botkit'),
 
     //OAUTH ACCESS REQUEST CODE 
 
-    app.get('/', (req, res) => {
-        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook+commands+bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/')}`);
-    });
+app.get('/', (req, res) => {
+    res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook+commands+bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/')}`);
+});
 
-    app.get('/', (req, res) => {
-        let code = req.query.code;
+app.get('/', (req, res) => {
+    let code = req.query.code;
 
-        request
-            .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('https://apttus-slack.herokuapp.com/')}`)
-            .end((err, result) => {
-                if (err) {
-                    console.log(err);
-                    return res.send('An error occured! Please try again later');
+    request
+        .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('https://apttus-slack.herokuapp.com/')}`)
+        .end((err, result) => {
+            if (err) {
+                console.log(err);
+                return res.send('An error occured!');
                 }
+            console.log(res.body);
 
-                let botToken = result.body.bot.bot_access_token;
-                console.log('Got the token:', botToken);
+            let botToken = result.body.bot.bot_access_token;
+            console.log('Got the token:', botToken);
 
-                startAptbot(result.body.bot.bot_access_token);
+            startAptbot(result.body.bot.bot_access_token);
 
-                res.send('SUCCESS, WAY TO GO DUDE!');
-            });
+            res.send('SUCCESS, WAY TO GO DUDE!');
         });
-
-    app.listen(8080, () => {
-        console.log('listening');
     });
 
-controller = Botkit.slackbot({interactive_replies: true}),
+app.listen(8080, () => {
+    console.log('listening');
+});
+
+let controller = Botkit.slackbot({interactive_replies: true}),
 
 function startAptbot(token) {
     const bot = controller.spawn({
         token: botToken
     })
-    bot.startRTM()
+    bot.startRTM(err => {
+    if (err) {
+        throw new Error('Could not connect to Slack');
+    }
+});
 
 
  /*   //OAUTH ACCESS REQUEST CODE v2
