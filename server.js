@@ -27,14 +27,14 @@ let Botkit = require('botkit'),
     //OAUTH ACCESS REQUEST CODE 
 
     app.get('/', (req, res) => {
-        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook+commands+bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/bot')}`);
+        res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook+commands+bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/salesforce')}`);
     });
 
-    app.get('/bot', (req, res) => {
+    app.get('/salesforce', (req, res) => {
         let code = req.query.code;
 
         request
-            .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('https://apttus-slack.herokuapp.com/bot')}`)
+            .get(`https://slack.com/api/oauth.access?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${code}&redirect_uri=${escape('https://apttus-slack.herokuapp.com/salesforce')}`)
             .end((err, result) => {
                 if (err) {
                     console.log(err);
@@ -246,6 +246,7 @@ controller.hears(['create contact', 'new contact'], 'direct_message,direct_menti
 
         convo.ask("What's the phone number?", (response, convo) => {
             phone = response.text;
+
             convo.next();
         });
 
