@@ -1,9 +1,5 @@
 "use strict";
 
-const CLIENT_ID = process.env.SLACK_CLIENT_ID;
-const CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
-
-
 let Botkit = require('botkit'),
     formatter = require('./modules/slack-formatter'),
     salesforce = require('./modules/salesforce'),
@@ -22,6 +18,7 @@ let Botkit = require('botkit'),
     generateAgreement = require('./modules/generateAgreement'),
     generateProposal = require('./modules/generateProposal'),
     searchProducts = require('./modules/searchProducts'),
+    controller = Botkit.slackbot({interactive_replies: true}),
     app = express();
 
 
@@ -56,7 +53,6 @@ app.listen(8080, () => {
     console.log('listening');
 });
 
-let controller = Botkit.slackbot({interactive_replies: true}),
 
 function startAptbot(token) {
     const bot = controller.spawn({
@@ -97,9 +93,6 @@ bot.startRTM(err => {
 });
 });
 });
-
-*/
-
     app.use(bodyParser.urlencoded({extended: true}));
     app.post('/approve', approve.execute);
     app.post('activateAgreement', activateAgreement.execute);
@@ -112,6 +105,9 @@ bot.startRTM(err => {
     app.post('generateAgreement', generateAgreement.execute);
     app.post('generateProposal', generateProposal.execute);
     app.post('searchProducts', searchProducts.execute);
+*/
+
+
 
 controller.hears(['help'], 'direct_message,direct_mention,mention', (bot, message) => {
     bot.reply(message, {

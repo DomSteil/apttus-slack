@@ -4,8 +4,8 @@ var nforce = require('nforce'),
     SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET,
     SF_USER_NAME = process.env.SF_USER_NAME,
     SF_PASSWORD = process.env.SF_PASSWORD,
-    SLACK_CLIENT_ID = process.env.SLACK_CLIENT_ID,
-    SLACK_CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
+    CLIENT_ID = process.env.CLIENT_ID,
+    CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 org = nforce.createConnection({
     clientId: SF_CLIENT_ID,
