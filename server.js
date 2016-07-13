@@ -25,7 +25,6 @@ let Botkit = require('botkit'),
     app = express();
     controller = Botkit.slackbot({interactive_replies: true}),
 
-
     //OAUTH ACCESS REQUEST CODE 
 
     app.get('/', (req, res) => {
@@ -43,20 +42,6 @@ let Botkit = require('botkit'),
                     return res.send('An error occured! Please try again later');
                 }
 
-                console.log(res.body);
-
-                let botToken = result.body.bot.bot_access_token;
-
-                startAptbot(result.body.bot.bot_access_token);
-
-                res.send('SUCCESS, WAY TO GO DUDE!');
-            });
-        });
-
-    app.listen(8080, () => {
-        console.log('listening');
-    });
-
     bot = controller.spawn({
         token: SLACK_BOT_TOKEN
     });
@@ -66,12 +51,10 @@ bot.startRTM(err => {
         throw new Error('Could not connect to Slack');
     }
 });
-
-
-    app.set('port', process.env.PORT || 5000);
+});
+});
 
     app.use(bodyParser.urlencoded({extended: true}));
-    
     app.post('/approve', approve.execute);
     app.post('activateAgreement', activateAgreement.execute);
     app.post('addBundle', addBundle.execute);
