@@ -48,7 +48,7 @@ let Botkit = require('botkit'),
 
 bot.startRTM(err => {
     if (err) {
-        throw new Error('Could not connect to Slack');
+        throw new Error('Could not connect to Slack ');
     }
 });
 });
