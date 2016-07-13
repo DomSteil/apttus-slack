@@ -45,7 +45,7 @@ app.get('/server', (req, res) => {
                 }
             console.log(res.body);
 
-            let botToken = result.body.bot.bot_access_token;
+            let botToken = 'xoxb-59125268883-Jb86udMc9trcXCttixja218r';
             console.log('Got the token:', botToken);
 
             startAptbot(result.body.bot.bot_access_token);
