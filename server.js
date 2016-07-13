@@ -2,6 +2,7 @@
 
 const CLIENT_ID = process.env.SLACK_CLIENT_ID;
 const CLIENT_SECRET = process.env.SLACK_CLIENT_SECRET;
+const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
 
 let Botkit = require('botkit'),
     formatter = require('./modules/slack-formatter'),
@@ -22,6 +23,7 @@ let Botkit = require('botkit'),
     generateProposal = require('./modules/generateProposal'),
     searchProducts = require('./modules/searchProducts'),
     app = express();
+    controller = Botkit.slackbot({interactive_replies: true}),
 
 
     //OAUTH ACCESS REQUEST CODE 
@@ -55,10 +57,8 @@ let Botkit = require('botkit'),
         console.log('listening');
     });
 
-
-function startAptbot(token) {
-bot = controller.spawn({
-        token: botToken
+    bot = controller.spawn({
+        token: SLACK_BOT_TOKEN
     });
 
 bot.startRTM(err => {
@@ -83,9 +83,6 @@ bot.startRTM(err => {
     app.post('generateAgreement', generateAgreement.execute);
     app.post('generateProposal', generateProposal.execute);
     app.post('searchProducts', searchProducts.execute);
-
-    controller = Botkit.slackbot({interactive_replies: true}),
-
 
 controller.hears(['help'], 'direct_message,direct_mention,mention', (bot, message) => {
     bot.reply(message, {
