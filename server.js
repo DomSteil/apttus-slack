@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 let Botkit = require('botkit'),
     formatter = require('./modules/slack-formatter'),
     salesforce = require('./modules/salesforce'),
@@ -21,6 +23,9 @@ let Botkit = require('botkit'),
     controller = Botkit.slackbot({interactive_replies: true}),
     app = express();
 
+    
+const CLIENT_ID = '9016687319.53755457395';
+const CLIENT_SECRET = '8fe6641dbee71c59b55f25e79a6c0a83';
 
     //OAUTH ACCESS REQUEST CODE 
 
