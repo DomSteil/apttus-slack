@@ -1,6 +1,8 @@
 "use strict";
 
-
+const SLACK_BOT_TOKEN = 'xoxb-59125268883-Jb86udMc9trcXCttixja218r';
+const CLIENT_ID = '9016687319.53755457395';
+const CLIENT_SECRET = '8fe6641dbee71c59b55f25e79a6c0a83';
 
 let Botkit = require('botkit'),
     formatter = require('./modules/slack-formatter'),
@@ -22,7 +24,7 @@ let Botkit = require('botkit'),
     searchProducts = require('./modules/searchProducts'),
     controller = Botkit.slackbot({interactive_replies: true}),
     app = express();
-
+/*
 
 const CLIENT_ID = '9016687319.53755457395';
 const CLIENT_SECRET = '8fe6641dbee71c59b55f25e79a6c0a83';
@@ -69,8 +71,8 @@ function startAptbot(token) {
     }
 });
 
-
- /*   //OAUTH ACCESS REQUEST CODE v2
+*/
+  //OAUTH ACCESS REQUEST CODE v2
 
     app.get('/', (req, res) => {
         res.redirect(`https://slack.com/oauth/authorize?client_id=${CLIENT_ID}&scope=incoming-webhook+commands+bot&redirect_uri=${escape('https://apttus-slack.herokuapp.com/salesforce')}`);
@@ -98,6 +100,8 @@ bot.startRTM(err => {
 });
 });
 });
+
+   /* 
     app.use(bodyParser.urlencoded({extended: true}));
     app.post('/approve', approve.execute);
     app.post('activateAgreement', activateAgreement.execute);
@@ -111,7 +115,6 @@ bot.startRTM(err => {
     app.post('generateProposal', generateProposal.execute);
     app.post('searchProducts', searchProducts.execute);
 */
-
 
 
 controller.hears(['help'], 'direct_message,direct_mention,mention', (bot, message) => {
