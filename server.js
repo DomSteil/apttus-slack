@@ -1,9 +1,5 @@
 "use strict";
 
-const SLACK_BOT_TOKEN = 'xoxb-59125268883-Jb86udMc9trcXCttixja218r';
-const CLIENT_ID = '9016687319.53755457395';
-const CLIENT_SECRET = '8fe6641dbee71c59b55f25e79a6c0a83';
-
 let Botkit = require('botkit'),
     formatter = require('./modules/slack-formatter'),
     salesforce = require('./modules/salesforce'),
@@ -24,7 +20,7 @@ let Botkit = require('botkit'),
     searchProducts = require('./modules/searchProducts'),
     controller = Botkit.slackbot({interactive_replies: true}),
     app = express();
-/*
+
 
 const CLIENT_ID = '9016687319.53755457395';
 const CLIENT_SECRET = '8fe6641dbee71c59b55f25e79a6c0a83';
@@ -47,7 +43,7 @@ app.get('/server', (req, res) => {
                 }
             console.log(res.body);
 
-            let botToken = 'xoxb-59125268883-Jb86udMc9trcXCttixja218r';
+            let botToken = result.body.bot.bot_access_token;
             console.log('Got the token:', botToken);
 
             startAptbot(result.body.bot.bot_access_token);
@@ -71,7 +67,7 @@ function startAptbot(token) {
     }
 });
 
-*/
+/*
   //OAUTH ACCESS REQUEST CODE v2
 
     app.get('/', (req, res) => {
@@ -100,6 +96,8 @@ bot.startRTM(err => {
 });
 });
 });
+
+    */
 
    /* 
     app.use(bodyParser.urlencoded({extended: true}));
