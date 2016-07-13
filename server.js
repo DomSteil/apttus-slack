@@ -137,7 +137,7 @@ controller.hears(['help'], 'direct_message,direct_mention,mention', (bot, messag
     });
 });
 
-
+/*
 controller.hears(['search account (.*)', 'search (.*) in accounts'], 'direct_message,direct_mention,mention', (bot, message) => {
     let name = message.match[1];
     salesforce.findAccount(name)
@@ -2092,3 +2092,4 @@ controller.hears(['Add Slack Licenses', 'Add Licenses'], 'direct_message,direct_
     bot.startConversation(message, askProductName);
 
 });
+*/
